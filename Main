@@ -14,7 +14,7 @@ def Article_xlsx(df_art):
     df_art['DOI']=df_art['DOI'].fillna('')
     df_art['id'] = df_art.apply(lambda x: f"{x['Articoli']}_{x['DOI']}", axis=1)
     
-    # Keep only the row with the maximum value in Citations colummn for each group of duplicates
+    # Keep only the row with the maximum value in col3 for each group of duplicates
     result = df_art.loc[df_art.groupby(by='id')['Citations'].idxmax()]
     
     # Drop the 'id' column
